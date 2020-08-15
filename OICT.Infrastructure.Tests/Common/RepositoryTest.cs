@@ -62,7 +62,6 @@ namespace OICT.Infrastructure.Tests.Common
             await SaveAndRecreateUnitOfWork();
 
             // Act
-
             var repository = new EmployeeRepository(UnitOfWork, Mock.Of<IClock>());
             var result = await repository.ListAsync();
 
