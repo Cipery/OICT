@@ -97,11 +97,14 @@ namespace OICT.Api
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
 
-            var scopeFactory = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>();
-            using var serviceScope = scopeFactory.CreateScope();
-            var serviceProvider = serviceScope.ServiceProvider;
-            var dbContext = serviceProvider.GetService<OICTApiContext>();
-            StartupDatabase(dbContext);
+            if (Configuration.GetValue<bool>("MigrateDatabaseOnStartup"))
+            {
+                var scopeFactory = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>();
+                using var serviceScope = scopeFactory.CreateScope();
+                var serviceProvider = serviceScope.ServiceProvider;
+                var dbContext = serviceProvider.GetService<OICTApiContext>();
+                StartupDatabase(dbContext);
+            }
         }
 
         public void StartupDatabase(OICTApiContext dbContext)
@@ -128,7 +131,7 @@ namespace OICT.Api
                     connection.Close();
                     break;
                 }
-                catch(SqlException)
+                catch(SqlException e)
                 {
                     Thread.Sleep((int)Math.Pow(2, retries) * 1000);
                     retries++;

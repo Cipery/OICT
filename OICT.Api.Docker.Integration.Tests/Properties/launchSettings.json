@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "OICT.Api.Docker.Integration.Tests": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

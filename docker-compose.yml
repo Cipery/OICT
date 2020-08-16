@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  oict.api:
+    image: ${DOCKER_REGISTRY-}oictapi
+    build:
+      context: .
+      dockerfile: OICT.Api/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__OICTApiContext=Server=db;Database=master;User=sa;Password=Hes12.lo;
+      - WaitForDatabaseInit=true
+    depends_on:
+      - db
+    ports:
+      - 45000:80
+      - 45001:443
+  db:
+    image: "mcr.microsoft.com/mssql/server"
+    environment:
+      SA_PASSWORD: "Hes12.lo"
+      ACCEPT_EULA: "Y"

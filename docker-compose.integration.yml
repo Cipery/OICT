@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  oict.api:
+    environment:
+      - ASPNETCORE_URLS=http://+:80
+  integration:
+    build: 
+      context: ./OICT.Api.Docker.Integration.Tests
+      dockerfile: Dockerfile
+    environment:
+      - API_URL=http://oict.api 
+    entrypoint: bash /app/wait_for_it.sh oict.api:81 -t 60 -- dotnet test
+    depends_on:
+      - oict.api
+      - db

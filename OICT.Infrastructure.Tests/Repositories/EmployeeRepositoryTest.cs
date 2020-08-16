@@ -80,5 +80,22 @@ namespace OICT.Infrastructure.Tests.Repositories
             // Assert
             filteredEmployees.Should().BeEquivalentTo(employeeOkAge1, employeeOkAge2);
         }
+
+        [Test]
+        public async Task ListEmployeesOlderThanAsync_WhenNoneExist_ShouldReturnEmptyList()
+        {
+            // Arrange
+            var clockMock = new Mock<IClock>();
+            clockMock.Setup(clock => clock.UtcNow).Returns(Id.Date1);
+
+            await SaveAndRecreateUnitOfWork();
+
+            // Act
+            var repository = new EmployeeRepository(UnitOfWork, clockMock.Object);
+            var filteredEmployees = await repository.ListEmployeesOlderThanAsync(Id.IntAge1);
+
+            // Assert
+            filteredEmployees.Should().BeEmpty();
+        }
     }
 }

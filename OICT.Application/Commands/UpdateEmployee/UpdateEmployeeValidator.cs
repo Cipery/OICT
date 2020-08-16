@@ -7,5 +7,9 @@ namespace OICT.Application.Commands.UpdateEmployee
 {
     class UpdateEmployeeValidator : AbstractValidator<UpdateEmployeeCommand>
     {
+        public UpdateEmployeeValidator()
+        {
+            RuleFor(x => x.UpdateEmployeeModel).NotNull();
+        }
     }
 }

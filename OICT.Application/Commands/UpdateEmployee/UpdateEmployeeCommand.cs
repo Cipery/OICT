@@ -15,7 +15,5 @@ namespace OICT.Application.Commands.UpdateEmployee
         {
             UpdateEmployeeModel = updateEmployeeModel;
         }
-
-        
     }
 }

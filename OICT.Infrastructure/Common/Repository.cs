@@ -50,5 +50,11 @@ namespace OICT.Infrastructure.Common
         {
             return (await FindAsync(keys)) != null;
         }
+
+        public T Update(T entity)
+        {
+            Context.Entry(entity).State = EntityState.Modified;
+            return entity;
+        }
     }
 }

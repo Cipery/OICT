@@ -12,5 +12,6 @@ namespace OICT.Infrastructure.Common
         void Delete(T entity);
         ValueTask<T> FindAsync(params object[] keys);
         Task<bool> ExistsAsync(params object[] keys);
+        T Update(T entity);
     }
 }
