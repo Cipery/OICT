@@ -39,6 +39,7 @@ namespace OICT.Api.Controllers
             return GenerateToken();
         }
 
+        //TODO: Move outside controller
         private string GenerateToken()
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:SigningKey"]));
