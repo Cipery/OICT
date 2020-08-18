@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -8,7 +6,7 @@ using MediatR;
 using OICT.Application.Dtos;
 using OICT.Infrastructure.Repositories;
 
-namespace OICT.Application.Queries.ListEmployeeOlderThan
+namespace OICT.Application.Queries.ListEmployeesOlderThan
 {
     class ListEmployeesOlderThanQueryHandler : IRequestHandler<ListEmployeesOlderThanQuery, IEnumerable<EmployeeModel>>
     {

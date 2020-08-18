@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using FluentValidation;
-using OICT.Application.Queries.ListEmployeeOlderThan;
 
 namespace OICT.Application.Queries.ListEmployeesOlderThan
 {

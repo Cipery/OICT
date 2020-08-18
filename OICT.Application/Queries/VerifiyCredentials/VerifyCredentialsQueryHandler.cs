@@ -11,7 +11,7 @@ namespace OICT.Application.Queries.VerifiyCredentials
     {
         public Task<bool> Handle(VerifyCredentialsQuery request, CancellationToken cancellationToken)
         {
-            return Task.FromResult(request.Username.Equals("admin") && request.Password.Equals("123456"));
+            return Task.FromResult(request.AuthCredentials.Username.Equals("admin") && request.AuthCredentials.Password.Equals("123456"));
         }
     }
 }

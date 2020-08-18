@@ -9,8 +9,9 @@ namespace OICT.Application.Queries.VerifiyCredentials
     {
         public VerifyCredentialsQueryValidator()
         {
-            RuleFor(x => x.Username).NotNull();
-            RuleFor(x => x.Password).NotNull();
+            RuleFor(x => x.AuthCredentials).NotNull();
+            RuleFor(x => x.AuthCredentials.Username).NotNull().NotEmpty();
+            RuleFor(x => x.AuthCredentials.Password).NotNull().NotEmpty();
         }
     }
 }

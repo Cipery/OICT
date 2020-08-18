@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using System;
+using FluentValidation;
 
 namespace OICT.Application.Commands.CreateEmployee
 {
@@ -9,6 +10,9 @@ namespace OICT.Application.Commands.CreateEmployee
             RuleFor(x => x.Model)
                 .NotNull()
                 .WithMessage("Model is null");
+            RuleFor(x => x.Model.Name).NotNull().NotEmpty();
+            RuleFor(x => x.Model.DateOfBirth).NotEqual(default(DateTime));
+            RuleFor(x => x.Model.StartOfEmployment).NotEqual(default(DateTime));
         }
     }
 }

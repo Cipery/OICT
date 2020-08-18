@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 using MediatR;
+using OICT.Application.Dtos;
 
 namespace OICT.Application.Queries.VerifiyCredentials
 {
     public class VerifyCredentialsQuery : IRequest<bool>
     {
-        public string Username { get; }
-        public string Password { get; }
+        public AuthCredentialsModel AuthCredentials { get;}
 
-        public VerifyCredentialsQuery(string username, string password)
+        public VerifyCredentialsQuery(AuthCredentialsModel authCredentials)
         {
-            Username = username;
-            Password = password;
+            AuthCredentials = authCredentials;
         }
     }
 }

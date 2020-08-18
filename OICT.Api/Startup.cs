@@ -42,7 +42,7 @@ namespace OICT.Api
             var connectionString = Configuration.GetConnectionString("OICTApiContext");
             if (Configuration.GetValue<bool>("WaitForDatabaseInit"))
             {
-                WaitForDBInit(connectionString);
+                WaitForDbInit(connectionString);
             }
 
             services.AddControllers();
@@ -110,15 +110,12 @@ namespace OICT.Api
         public void StartupDatabase(OICTApiContext dbContext)
         {
             Console.WriteLine("Migrating database");
-            //dbContext.Database.EnsureDeleted();
-            // dbContext.Database.EnsureCreated();
-            // dbContext.Database.EnsureDeleted();
             dbContext.Database.Migrate();
             Console.WriteLine("Migrated database");
             dbContext.SaveChanges();
         }
 
-        private static void WaitForDBInit(string connectionString)
+        private static void WaitForDbInit(string connectionString)
         {
             var connection = new SqlConnection(connectionString);
             int retries = 1;
@@ -131,7 +128,7 @@ namespace OICT.Api
                     connection.Close();
                     break;
                 }
-                catch(SqlException e)
+                catch(SqlException)
                 {
                     Thread.Sleep((int)Math.Pow(2, retries) * 1000);
                     retries++;

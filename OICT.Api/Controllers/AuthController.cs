@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using OICT.Application.Dtos;
 using OICT.Application.Queries.VerifiyCredentials;
 
 namespace OICT.Api.Controllers
@@ -27,10 +28,10 @@ namespace OICT.Api.Controllers
             _configuration = configuration;
         }
 
-        [HttpPost("/login")]
-        public async Task<ActionResult<string>> Login(string userName, string password)
+        [HttpPost("login")]
+        public async Task<ActionResult<string>> Login(AuthCredentialsModel authCredentials)
         {
-            var validCredentials = await _mediator.Send(new VerifyCredentialsQuery(userName, password));
+            var validCredentials = await _mediator.Send(new VerifyCredentialsQuery(authCredentials));
             if (!validCredentials)
             {
                 return Unauthorized();

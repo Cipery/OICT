@@ -6,6 +6,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using OICT.Application.Commands;
 using OICT.Application.Commands.CreateEmployee;
@@ -15,8 +16,8 @@ using OICT.Application.Dtos;
 using OICT.Application.Queries;
 using OICT.Application.Queries.EmployeeExists;
 using OICT.Application.Queries.GetEmployee;
-using OICT.Application.Queries.ListEmployeeOlderThan;
 using OICT.Application.Queries.ListEmployees;
+using OICT.Application.Queries.ListEmployeesOlderThan;
 using OICT.Domain.Model;
 using OICT.Infrastructure;
 
@@ -65,13 +66,21 @@ namespace OICT.Api.Controllers
                 return BadRequest();
             }
 
-            var exists = await _mediator.Send(new GetEmployeeExistsQuery(id));
-            if (!exists)
+            try
             {
-                return NotFound();
+                await _mediator.Send(new UpdateEmployeeCommand(employeeEntity));
+            }
+            catch (SqlException)
+            {
+                var exists = await _mediator.Send(new GetEmployeeExistsQuery(id));
+                if (!exists)
+                {
+                    return NotFound();
+                }
+
+                throw;
             }
 
-            await _mediator.Send(new UpdateEmployeeCommand(employeeEntity));
             return NoContent();
         }
 
@@ -97,7 +106,8 @@ namespace OICT.Api.Controllers
             return employee;
         }
 
-        [HttpGet("/listOlderThan/{age}")]
+        // GET: api/Employees/listOlderThan/18
+        [HttpGet("listOlderThan/{age}")]
         public async Task<IEnumerable<EmployeeModel>> ListOlderThan(int age) =>
             await _mediator.Send(new ListEmployeesOlderThanQuery(age));
     }
