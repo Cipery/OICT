@@ -21,6 +21,8 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OICT.Api.Docker.Integration.Tests", "OICT.Api.Docker.Integration.Tests\OICT.Api.Docker.Integration.Tests.csproj", "{99F3BF98-647B-4018-9F94-ECC36B846EC5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OICT.Api.Application.Tests", "OICT.Api.Application.Tests\OICT.Api.Application.Tests.csproj", "{734D5777-045E-4CD9-A82A-B68BF9CE1A07}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{99F3BF98-647B-4018-9F94-ECC36B846EC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99F3BF98-647B-4018-9F94-ECC36B846EC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99F3BF98-647B-4018-9F94-ECC36B846EC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{734D5777-045E-4CD9-A82A-B68BF9CE1A07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{734D5777-045E-4CD9-A82A-B68BF9CE1A07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{734D5777-045E-4CD9-A82A-B68BF9CE1A07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{734D5777-045E-4CD9-A82A-B68BF9CE1A07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +73,7 @@ Global
 		{F99010F9-246C-4971-83E9-A65DFDAFF704} = {EB389F43-40DE-4473-AF17-22FEAF04DEBA}
 		{2A70D607-6B7C-4E11-B033-3E1BA9EBCB06} = {EB389F43-40DE-4473-AF17-22FEAF04DEBA}
 		{99F3BF98-647B-4018-9F94-ECC36B846EC5} = {EB389F43-40DE-4473-AF17-22FEAF04DEBA}
+		{734D5777-045E-4CD9-A82A-B68BF9CE1A07} = {EB389F43-40DE-4473-AF17-22FEAF04DEBA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {995C46D2-EBAD-41C8-874A-1496B589F875}

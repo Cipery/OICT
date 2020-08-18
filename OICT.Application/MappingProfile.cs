@@ -8,7 +8,8 @@ namespace OICT.Application
     {
         public MappingProfile()
         {
-            CreateMap<CreateEmployeeModel, EmployeeEntity>();
+            CreateMap<CreateEmployeeModel, EmployeeEntity>()
+                .ForMember(entity => entity.Id, opts => opts.Ignore());
             CreateMap<EmployeeEntity, EmployeeModel>();
             CreateMap<UpdateEmployeeModel, EmployeeEntity>();
         }

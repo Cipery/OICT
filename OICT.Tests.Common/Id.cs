@@ -18,14 +18,14 @@ namespace OICT.Tests.Common
         public const int IntAge5 = 25;
         public const int IntAge6 = 26;
 
-        public const int IntAmount1 = 11;
-        public const int IntAmount2 = 51;
-        public const int IntAmount3 = 101;
-        public const int IntAmount4 = 501;
-        public const int IntAmount5 = 1001;
-        public const int IntAmount6 = 5001;
-        public const int IntAmount7 = 10001;
-        public const int IntAmount8 = 50001;
+        public const int IntAmount1 = 1;
+        public const int IntAmount2 = 2;
+        public const int IntAmount3 = 3;
+        public const int IntAmount4 = 4;
+        public const int IntAmount5 = 5;
+        public const int IntAmount6 = 6;
+        public const int IntAmount7 = 7;
+        public const int IntAmount8 = 8;
 
         public const string StringValue1 = "string_value_1";
         public const string StringValue2 = "string_value_2";

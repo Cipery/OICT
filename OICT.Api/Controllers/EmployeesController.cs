@@ -29,7 +29,6 @@ namespace OICT.Api.Controllers
     public class EmployeesController : ControllerBase
     {
         private readonly IMediator _mediator;
-
         public EmployeesController(IMediator mediator)
         {
             _mediator = mediator;
@@ -44,7 +43,17 @@ namespace OICT.Api.Controllers
         }
 
         // GET: api/Employees/5
+        /// <summary>
+        /// Gets an employee with supplied ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>A requested employee</returns>
+        /// <response code="201">Gets an employee with supplied ID.</response>
+        /// <response code="404">If the employee is not found</response>       
         [HttpGet("{id}")]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<EmployeeModel>> GetEmployee(int id)
         {
             var employee = await _mediator.Send(new GetEmployeeQuery(id));

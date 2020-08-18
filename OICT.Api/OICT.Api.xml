@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OICT.Api</name>
+    </assembly>
+    <members>
+        <member name="M:OICT.Api.Controllers.EmployeesController.GetEmployee(System.Int32)">
+            <summary>
+            Gets an employee with supplied ID.
+            </summary>
+            <param name="id"></param>
+            <returns>A requested employee</returns>
+            <response code="201">Gets an employee with supplied ID.</response>
+            <response code="404">If the employee is not found</response>       
+        </member>
+    </members>
+</doc>
