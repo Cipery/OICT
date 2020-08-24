@@ -10,6 +10,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Production
       - ConnectionStrings__OICTApiContext=Server=db;Database=master;User=sa;Password=Hes12.lo;
       - WaitForDatabaseInit=true
+      - MigrateDatabaseOnStartup=true
     depends_on:
       - db
     ports:

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
@@ -79,7 +80,7 @@ namespace OICT.Api.Controllers
             {
                 await _mediator.Send(new UpdateEmployeeCommand(employeeEntity));
             }
-            catch (SqlException)
+            catch (DBConcurrencyException)
             {
                 var exists = await _mediator.Send(new GetEmployeeExistsQuery(id));
                 if (!exists)
