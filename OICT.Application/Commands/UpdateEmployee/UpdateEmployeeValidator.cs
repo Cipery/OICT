@@ -10,6 +10,9 @@ namespace OICT.Application.Commands.UpdateEmployee
         public UpdateEmployeeValidator()
         {
             RuleFor(x => x.UpdateEmployeeModel).NotNull();
+            RuleFor(x => x.UpdateEmployeeModel.ChildrenCount).InclusiveBetween(0, 15);
+            RuleFor(x => x.UpdateEmployeeModel.DateOfBirth).NotEqual(default(DateTime));
+            RuleFor(x => x.UpdateEmployeeModel.StartOfEmployment).NotEqual(default(DateTime));
         }
     }
 }

@@ -9,8 +9,7 @@ namespace OICT.Application.Queries.ListEmployeesOlderThan
     {
         public ListEmployeesOlderThanQueryValidator()
         {
-            RuleFor(x => x.Age).Must(age => age >= 0 && age <= 125)
-                .WithMessage("Age must be between 0 and 125");
+            RuleFor(x => x.Age).InclusiveBetween(0, 125);
         }
     }
 }
